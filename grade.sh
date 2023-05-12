@@ -23,3 +23,20 @@ then
     javac IncorrectFileSubmission.java
     java IncorrectFileSubmission 2
 fi
+
+cp TestListExamples.java student-submission/ListExamples.java Server.java grading-area
+
+javac Server.java 
+javac -cp .:/lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java 
+java -cp .:/lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore Tests > grading-area/TestResults.txt 2>&1
+
+if [[ $?!=0 ]]
+then
+    echo "Test Cases Failed"
+else 
+    echo "Your ListExamples.java file has passed all the Tests!!"
+fi
+
+cat grading-area/TestResults.txt
+
+
