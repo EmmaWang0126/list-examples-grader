@@ -18,8 +18,8 @@ echo 'Finished cloning'
 # Step2: Check that the student code has the correct file submitted. If they didn’t, 
 #       detect and give helpful feedback about it. This is not done by the provided code, you should figure out where to add it
 
-if [[-f student-submission/ListExamples.java]]
+if [[ ! -f student-submission/ListExamples.java ]]
 then 
     javac IncorrectFileSubmission.java
-    java ExitCode 2
+    java IncorrectFileSubmission 2
 fi
